@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConcertHall.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/Jacob_Young_Projects.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Jacob_Young_Projects.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Calender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Calender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ConcessionStand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ConcessionStand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Event.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IObserver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ISell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ISell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ISubject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ISubject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IVerify.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IVerify.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/MainActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Sellable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Sellable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Ticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/TicketBooth.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/TicketBooth.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Ticketer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Ticketer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/Calender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Calender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/ConcessionStand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/ConcessionStand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/IDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/IObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/ISell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/ISell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/ISubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/ISubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/IVerify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IVerify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/Sellable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Sellable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/TicketBooth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/TicketBooth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/Ticketer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/Ticketer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Concert_Hall/src/main/java/com/solvd/concert_hall/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CubbbvyyGNbGJJmE6NZGX0mpeO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bardi\IdeaProjects\ConcertHall" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="" />
+      <created>1659655489228</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659655489228</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
