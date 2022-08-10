@@ -3,16 +3,20 @@ package main.java.com.solvd.concert_hall.menus;
 import main.java.com.solvd.concert_hall.Calender;
 import main.java.com.solvd.concert_hall.Event;
 import main.java.com.solvd.concert_hall.Ticket;
-import main.java.com.solvd.concert_hall.User;
+import main.java.com.solvd.concert_hall.UserInventory;
+import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
 import main.java.com.solvd.concert_hall.interfaces.IDisplay;
 import main.java.com.solvd.concert_hall.interfaces.IObserver;
-import main.java.com.solvd.concert_hall.interfaces.ISell;
+import main.java.com.solvd.concert_hall.interfaces.IShop;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public final class TicketBooth implements ISell<Ticket>, IDisplay, IObserver<Event> {
+public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver<Event> {
+    private static final Logger logger = LogManager.getLogger(TicketBooth.class);
     final int concertHallSeats = 425;
     private Calender calender;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -25,7 +29,8 @@ public final class TicketBooth implements ISell<Ticket>, IDisplay, IObserver<Eve
     }
 
     @Override
-    public User display(Scanner scan, User user) {
+    public UserInventory display(Scanner scan, UserInventory userInventory) throws OutOfChoiceBoundsException {
+        logger.info("entered display for ticket booth");
         int choice1;
         double choice2;
         while(true) {
@@ -38,13 +43,22 @@ public final class TicketBooth implements ISell<Ticket>, IDisplay, IObserver<Eve
             choice1 = scan.nextInt();
             if (choice1 <= -1) {
                 System.out.println("Have a nice day.");
-                return user;
+                return userInventory;
             } else {
                 System.out.println("Please enter how much you will pay.");
                 choice2 = scan.nextDouble();
-                Ticket ticket = buyItem(choice1, choice2);
-                if(ticket != null) {
-                    user.tickets.add(ticket);
+                try {
+                    Ticket ticket = buyItem(choice1 - 1, choice2);
+                    if (ticket != null) {
+                        userInventory.tickets.add(ticket);
+                        System.out.println("Here is your ticket.");
+                        System.out.printf("Your change is $%2.2f. Have a nice day!\n", choice2 - inventory.get(choice1).getPrice());
+                    } else {
+                        System.out.println("I'm sorry, but you cannot buy this ticket.");
+                    }
+                } catch (Exception e) {
+                    logger.error("out of bounds number " + (choice1 - 1) + " from array length of " + inventory.size());
+                    throw new OutOfChoiceBoundsException("That item number does not exist.");
                 }
             }
         }
@@ -52,43 +66,26 @@ public final class TicketBooth implements ISell<Ticket>, IDisplay, IObserver<Eve
 
     @Override
     public Ticket buyItem(int item, double money) {
-        for(Ticket t: inventory) {
-            if(calender.events.get(item).equals(t)) {
-                if(money < t.getPrice()) {
-                    System.out.println("I'm sorry, but that is not enough money for this ticket.");
-                    return null;
-                } else if (t.getAmount() == 0) {
-                    System.out.println("I'm sorry, but we are out of this item.");
-                    return null;
-                }
-                if(deleteItem(t)) {
-                    System.out.println("Here is your ticket. Have a nice day!");
-                    System.out.printf("Your change is $%2.2f. Have a nice day!\n",money - inventory.get(item).getPrice());
-                    return t;
-                }
-            }
+        if((money < inventory.get(item).getPrice()) || (inventory.get(item).getAmount() == 0)) {
+            return null;
         }
-        return null;
+        inventory.get(item).buyStock();
+        return inventory.get(item);
     }
 
     @Override
-    public boolean deleteItem(Ticket item) {
-        if(inventory.contains(item)) {
-            inventory.get(inventory.indexOf(item)).deleteStock();
-            return true;
-        }
-        return false;
+    public void createUpdate(Event event) {
+        Ticket ticket = new Ticket(event, event.price, concertHallSeats);
+        inventory.add(ticket);
     }
 
     @Override
-    public void update(Event event) {
+    public void deleteUpdate(Event event) {
         for (Ticket t : inventory) {
             if (t.getEvent().equals(event)) {
                 inventory.remove(t);
                 return;
             }
         }
-        Ticket ticket = new Ticket(event, event.price, concertHallSeats);
-        inventory.add(ticket);
     }
 }

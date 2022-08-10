@@ -6,10 +6,8 @@ public class Ticket extends Sellable {
     private Event event;
 
     public Ticket(Event event, double price, int amount) {
+        super(price, event.getName(), amount);
         this.event = event;
-        super.setName(event.getName());
-        super.setPrice(price);
-        super.setAmount(amount);
     }
 
     public Event getEvent() {
@@ -31,13 +29,16 @@ public class Ticket extends Sellable {
 
     @Override
     public int hashCode() {
-
-        return event.hashCode() * 1000 + this.getAmount();
+        int result = 7;
+        result = result * 19 + this.getName().hashCode();
+        result = (int) (result * 19 + Math.round(this.getPrice()));
+        result = result * 19 + this.getEvent().hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
 
-        return event.toString() + "  with " + this.getAmount() + "left over";
+        return event.toString() + " for $" + String.format("%.2f", this.getPrice()) + "  with " + this.getAmount() + "left over";
     }
 }

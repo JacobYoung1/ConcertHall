@@ -1,5 +1,6 @@
 package main.java.com.solvd.concert_hall;
 
+import main.java.com.solvd.concert_hall.exceptions.NegativeNumberException;
 import main.java.com.solvd.concert_hall.interfaces.IObserver;
 import main.java.com.solvd.concert_hall.interfaces.ISubject;
 
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 
 public class Calender implements ISubject<Event> {
     public ArrayList<Event> events;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private LocalDateTime date;
 
     public Calender(int year, int month, int day, int hour, int minute) {
@@ -25,14 +25,6 @@ public class Calender implements ISubject<Event> {
     public void deleteObserver(IObserver observer) {
         observers.remove(observer);
     }
-
-    @Override
-    public void notifyObservers(Event event) {
-        for (IObserver o : observers) {
-            o.update(event);
-        }
-    }
-
     //Used to check if an event is currently happening
     private boolean isHappening(Event event) {
         LocalDateTime tempDate = event.date.plusMinutes(event.lengthMinutes);
@@ -62,17 +54,24 @@ public class Calender implements ISubject<Event> {
                 return false;
             }
         }
-        notifyObservers(event);
+        for (IObserver o : observers) {
+            o.createUpdate(event);
+        }
         addCalenderEvent(event);
         return true;
     }
 
     //this passes time
-    public final void passTime(int minutes) {
+    public final void passTime(int minutes) throws NegativeNumberException {
+        if (minutes < 0) {
+            throw new NegativeNumberException("You cannot reverse time.");
+        }
         date.plusMinutes(minutes);
-        for(Event e: events) {
-            if(e.date.plusMinutes(e.lengthMinutes).isBefore(date)) {
-                notifyObservers(e);
+        for (Event e : events) {
+            if (e.date.plusMinutes(e.lengthMinutes).isBefore(date)) {
+                for (IObserver o : observers) {
+                    o.deleteUpdate(e);
+                }
                 events.remove(e);
             }
         }
@@ -97,7 +96,7 @@ public class Calender implements ISubject<Event> {
 
     //a static method for giving a string when given a localdatetime
     public static String printTime(LocalDateTime date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm.");
         return date.format(formatter);
     }
 }

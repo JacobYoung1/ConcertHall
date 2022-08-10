@@ -1,21 +1,26 @@
 package main.java.com.solvd.concert_hall.menus;
 
 import main.java.com.solvd.concert_hall.Item;
-import main.java.com.solvd.concert_hall.User;
+import main.java.com.solvd.concert_hall.UserInventory;
+import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
 import main.java.com.solvd.concert_hall.interfaces.IDisplay;
-import main.java.com.solvd.concert_hall.interfaces.ISell;
+import main.java.com.solvd.concert_hall.interfaces.IShop;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ConcessionStand implements ISell<Item>, IDisplay {
+public class ConcessionStand implements IShop<Item>, IDisplay {
+    private static final Logger logger = LogManager.getLogger(ConcessionStand.class);
     private ArrayList<Item> inventory;
 
     public ConcessionStand() {
         inventory = new ArrayList<Item>();
     }
     @Override
-    public User display(Scanner scan, User user) {
+    public UserInventory display(Scanner scan, UserInventory userInventory) throws OutOfChoiceBoundsException {
+        logger.info("entered display for concession stand");
         int choice1;
         double choice2;
         while(true) {
@@ -27,13 +32,22 @@ public class ConcessionStand implements ISell<Item>, IDisplay {
             choice1 = scan.nextInt();
             if (choice1 <= -1) {
                 System.out.println("Have a nice day.");
-                return user;
+                return userInventory;
             } else {
                 System.out.println("Please enter how much you will pay.");
                 choice2 = scan.nextDouble();
-                Item item = buyItem(choice1, choice2);
-                if(item != null) {
-                    user.items.add(item);
+                try {
+                    Item item = buyItem(choice1 - 1, choice2);
+                    if (item != null) {
+                        userInventory.items.add(item);
+                        System.out.println("Here is your" + inventory.get(choice1).getName() + ".");
+                        System.out.printf("Your change is $%2.2f. Have a nice day!\n",choice2 - inventory.get(choice1).getPrice());
+                    } else {
+                        System.out.println("I'm sorry, but you cannot buy this item.");
+                    }
+                } catch (Exception e) {
+                    logger.error("out of bounds number " + (choice1 - 1) + " from array length of " + inventory.size());
+                    throw new OutOfChoiceBoundsException("That item number does not exist.");
                 }
             }
         }
@@ -41,34 +55,18 @@ public class ConcessionStand implements ISell<Item>, IDisplay {
 
     @Override
     public Item buyItem(int item, double money) {
-        if(money < inventory.get(item).getPrice()) {
-            System.out.println("I'm sorry, but that is not enough money for this.");
-            return null;
-        } else if (inventory.get(item).getAmount() == 0) {
-            System.out.println("I'm sorry, but we are out of this item.");
+        if((money < inventory.get(item).getPrice()) || (inventory.get(item).getAmount() == 0)) {
             return null;
         }
-        if(deleteItem(inventory.get(item))) {
-            System.out.println("Here is your" + inventory.get(item).getName() + ".");
-            System.out.printf("Your change is $%2.2f. Have a nice day!\n",money - inventory.get(item).getPrice());
-            return inventory.get(item);
-        }
-        return null;
-    }
-
-    @Override
-    public boolean deleteItem(Item item) {
-        if(inventory.contains(item)) {
-            inventory.get(inventory.indexOf(item)).deleteStock();
-            return true;
-        }
-        return false;
+        inventory.get(item).buyStock();
+        return inventory.get(item);
     }
 
     //used to add items to the stand
     public boolean addItem(Item item) {
         if(inventory.contains(item)) {
-            return false;
+            inventory.get(inventory.indexOf(item)).addStock(item.getAmount());
+            return true;
         }
         inventory.add(item);
         return true;

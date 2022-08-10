@@ -33,13 +33,17 @@ public class Event {
 
     @Override
     public int hashCode() {
-
-        return name.hashCode() * 1000 + date.hashCode() * 100 + lengthMinutes * 10;
+        int result = 7;
+        result = result * 19 + this.getName().hashCode();
+        result = result * 19 + this.date.hashCode();
+        result = result * 19 + lengthMinutes;
+        result = (int) (result * 19 + Math.round(this.price));
+        return result;
     }
 
     @Override
     public String toString() {
 
-        return name + " at " + Calender.printTime(date) + " for " + lengthMinutes + " for $" + price;
+        return name + " at " + Calender.printTime(date) + " for " + lengthMinutes + " for $" + String.format("%.2f", this.price);
     }
 }

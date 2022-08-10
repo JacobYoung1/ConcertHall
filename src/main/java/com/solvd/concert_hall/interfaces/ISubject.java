@@ -9,6 +9,4 @@ public interface ISubject<T> {
 
     void addObserver(IObserver observer);
     void deleteObserver(IObserver observer);
-    //used to update the observers in the array
-    void notifyObservers(T message);
 }
