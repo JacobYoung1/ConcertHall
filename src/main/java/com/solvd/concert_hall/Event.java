@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 public class Event {
     private String name;
-    public LocalDateTime date;
-    public int lengthMinutes;
-    public double price;
+    private LocalDateTime date;
+    private int lengthMinutes;
+    private double price;
 
     public Event(String name, int year, int month, int day, int hour, int minute, int lengthMinutes, double price) {
         this.name = name;
@@ -14,8 +14,37 @@ public class Event {
         this.lengthMinutes = lengthMinutes;
         this.price = price;
     }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getLengthMinutes() {
+        return lengthMinutes;
+    }
+
+    public void setLengthMinutes(int lengthMinutes) {
+        this.lengthMinutes = lengthMinutes;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     @Override
@@ -43,7 +72,6 @@ public class Event {
 
     @Override
     public String toString() {
-
-        return name + " at " + Calender.printTime(date) + " for " + lengthMinutes + " for $" + String.format("%.2f", this.price);
+        return name + " at " + Calendar.printTime(date) + " for " + lengthMinutes + " for $" + String.format("%.2f", this.price);
     }
 }

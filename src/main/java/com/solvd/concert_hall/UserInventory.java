@@ -3,12 +3,43 @@ package main.java.com.solvd.concert_hall;
 import java.util.ArrayList;
 
 public class UserInventory {
-    public ArrayList<Item> items;
-    public ArrayList<Ticket> tickets;
+    private ArrayList<BuyableItem> buyableItems;
+    private ArrayList<Ticket> tickets;
 
     public UserInventory() {
-        //creates the user's inventory
-        items = new ArrayList<Item>();
+        buyableItems = new ArrayList<BuyableItem>();
         tickets = new ArrayList<Ticket>();
+    }
+
+    public ArrayList<BuyableItem> getBuyableItems() {
+        return buyableItems;
+    }
+
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setBuyableItems(ArrayList<BuyableItem> buyableItems) {
+        this.buyableItems = buyableItems;
+    }
+
+    public void setTickets(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public void addBuyableItem(BuyableItem buyableItem) {
+        buyableItems.add(buyableItem);
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+    }
+
+    public void deleteBuyableItem(BuyableItem buyableItem) {
+        buyableItems.remove(buyableItem);
+    }
+
+    public void deleteTicket(Ticket ticket) {
+        tickets.remove(ticket);
     }
 }

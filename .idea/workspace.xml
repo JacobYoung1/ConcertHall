@@ -1,41 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="minor modifications to organization and fixed the transfer of the user's inventory from display menus to the main activity.">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_api_2_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_core_2_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/exceptions/NegativeNumberException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/exceptions/OutOfChoiceBoundsException.java" afterDir="false" />
+    <list default="true" id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="Added Loggers and Exceptions, improvements based off of comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConcertHall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConcertHall.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jacob_Young_Projects.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Calender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ConcessionStand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Employee.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ISell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/ISubject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/IVerify.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/MainActivity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Sellable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Ticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/TicketBooth.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/Ticketer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Jacob_Young_Projects/main/java/com/solvd/concert_hall/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Calender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Calender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Calender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Calendar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/BuyableItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/UserInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Sellable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Sellable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/UserInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/UserInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Sellable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/exceptions/NegativeNumberException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/exceptions/NegativeNumberException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/exceptions/OutOfChoiceBoundsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/exceptions/OutOfChoiceBoundsException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/ISell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/ISubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/ISubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IVerify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IVerify.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/ConcessionStand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/ConcessionStand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/TicketBooth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/TicketBooth.java" afterDir="false" />
@@ -64,21 +44,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/bardi/Downloads/apache-log4j-2.18.0-bin/log4j-api-2.18.0.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bardi/Downloads/apache-log4j-2.18.0-bin/log4j-api-2.18.0.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\bardi\IdeaProjects\ConcertHall\src" />
@@ -128,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659658093824</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added Loggers and Exceptions, improvements based off of comments">
+      <created>1660091946739</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1660091946739</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -147,6 +134,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minor modifications to organization and fixed the transfer of the user's inventory from display menus to the main activity." />
-    <option name="LAST_COMMIT_MESSAGE" value="minor modifications to organization and fixed the transfer of the user's inventory from display menus to the main activity." />
+    <MESSAGE value="Added Loggers and Exceptions, improvements based off of comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Loggers and Exceptions, improvements based off of comments" />
   </component>
 </project>

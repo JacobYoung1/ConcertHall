@@ -1,7 +1,7 @@
 package main.java.com.solvd.concert_hall.menus;
 
-import main.java.com.solvd.concert_hall.Calender;
-import main.java.com.solvd.concert_hall.Item;
+import main.java.com.solvd.concert_hall.Calendar;
+import main.java.com.solvd.concert_hall.BuyableItem;
 import main.java.com.solvd.concert_hall.Ticket;
 import main.java.com.solvd.concert_hall.UserInventory;
 import main.java.com.solvd.concert_hall.abstract_classes.Employee;
@@ -14,15 +14,15 @@ import java.util.Scanner;
 
 public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
     private static final Logger logger = LogManager.getLogger(Ticketer.class);
-    private Calender calender;
+    private Calendar calendar;
 
-    public Ticketer(Calender calender, String name) {
-        this.calender = calender;
+    public Ticketer(Calendar calendar, String name) {
+        this.calendar = calendar;
         super.setName(name);
     }
     @Override
     public boolean verify(Ticket ticket) {
-        if(calender.getCurrentEvent().equals(ticket.getEvent())) {
+        if(calendar.getCurrentEvent().equals(ticket.getEvent())) {
             System.out.println("Enjoy the show.");
             return true;
         }
@@ -38,17 +38,17 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
     public UserInventory display(Scanner scan, UserInventory userInventory) {
         logger.info("entered display for ticketer");
         greeting();
-        if(userInventory.tickets.size() == 0) {
+        if(userInventory.getTickets().size() == 0) {
             System.out.println("Come back later when you have tickets");
         }
-        for (Ticket t: userInventory.tickets) {
+        for (Ticket t: userInventory.getTickets()) {
             if(verify(t)) {
-                for(Item i: userInventory.items) {
+                for(BuyableItem i: userInventory.getBuyableItems()) {
                     System.out.println("You consumed a(n) " + i.getName() + ".");
-                    userInventory.items.remove(i);
+                    userInventory.deleteBuyableItem(i);
                 }
                 System.out.println(t.getName() + " was awesome.");
-                userInventory.tickets.remove(t);
+                userInventory.deleteTicket(t);
             }
         }
         return userInventory;

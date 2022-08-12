@@ -1,6 +1,6 @@
 package main.java.com.solvd.concert_hall.menus;
 
-import main.java.com.solvd.concert_hall.Item;
+import main.java.com.solvd.concert_hall.BuyableItem;
 import main.java.com.solvd.concert_hall.UserInventory;
 import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
 import main.java.com.solvd.concert_hall.interfaces.IDisplay;
@@ -11,13 +11,14 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ConcessionStand implements IShop<Item>, IDisplay {
+public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
     private static final Logger logger = LogManager.getLogger(ConcessionStand.class);
-    private ArrayList<Item> inventory;
+    private ArrayList<BuyableItem> inventory;
 
     public ConcessionStand() {
-        inventory = new ArrayList<Item>();
+        inventory = new ArrayList<BuyableItem>();
     }
+
     @Override
     public UserInventory display(Scanner scan, UserInventory userInventory) throws OutOfChoiceBoundsException {
         logger.info("entered display for concession stand");
@@ -36,25 +37,26 @@ public class ConcessionStand implements IShop<Item>, IDisplay {
             } else {
                 System.out.println("Please enter how much you will pay.");
                 choice2 = scan.nextDouble();
-                try {
-                    Item item = buyItem(choice1 - 1, choice2);
-                    if (item != null) {
-                        userInventory.items.add(item);
-                        System.out.println("Here is your" + inventory.get(choice1).getName() + ".");
-                        System.out.printf("Your change is $%2.2f. Have a nice day!\n",choice2 - inventory.get(choice1).getPrice());
-                    } else {
-                        System.out.println("I'm sorry, but you cannot buy this item.");
-                    }
-                } catch (Exception e) {
-                    logger.error("out of bounds number " + (choice1 - 1) + " from array length of " + inventory.size());
-                    throw new OutOfChoiceBoundsException("That item number does not exist.");
+                BuyableItem buyableItem = buyItem(choice1 - 1, choice2);
+                if (buyableItem != null) {
+                    userInventory.addBuyableItem(buyableItem);
+                    System.out.println("Here is your" + inventory.get(choice1).getName() + ".");
+                    System.out.printf("Your change is $%2.2f. Have a nice day!\n", choice2 - inventory.get(choice1).getPrice());
+                } else {
+                    System.out.println("I'm sorry, but you cannot buy this item.");
                 }
             }
         }
     }
 
     @Override
-    public Item buyItem(int item, double money) {
+    public BuyableItem buyItem(int item, double money) throws OutOfChoiceBoundsException {
+        try {
+            inventory.get(item);
+        } catch (Exception e) {
+            logger.error("out of bounds number " + item + " from array length of " + inventory.size());
+            throw new OutOfChoiceBoundsException("That item number does not exist.");
+        }
         if((money < inventory.get(item).getPrice()) || (inventory.get(item).getAmount() == 0)) {
             return null;
         }
@@ -62,13 +64,24 @@ public class ConcessionStand implements IShop<Item>, IDisplay {
         return inventory.get(item);
     }
 
-    //used to add items to the stand
-    public boolean addItem(Item item) {
-        if(inventory.contains(item)) {
-            inventory.get(inventory.indexOf(item)).addStock(item.getAmount());
-            return true;
+    @Override
+    public void addStock(int item, int amount) {
+        inventory.get(item).addStock(amount);
+    }
+
+    /* used to add items to the stand */
+    @Override
+    public void addItem(BuyableItem buyableItem) {
+        if(inventory.contains(buyableItem)) {
+            addStock(inventory.indexOf(buyableItem), buyableItem.getAmount());
+            return;
         }
-        inventory.add(item);
-        return true;
+        inventory.add(buyableItem);
+        return;
+    }
+
+    @Override
+    public void removeItem(BuyableItem item) {
+        inventory.remove(item);
     }
 }
