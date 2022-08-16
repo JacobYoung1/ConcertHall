@@ -18,9 +18,8 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
     /**
      * This is the Constructor for Ticketer that takes a Calendar and a String name.
      *
-     @param  calendar  the Calendar that the Ticketer will use for checking the validity of Tickets
-     *
-     @param  name      the String name of the Ticketer
+     * @param  calendar The Calendar that the Ticketer will use for checking the validity of Tickets.
+     * @param  name The String name of the Ticketer.
      */
     public Ticketer(Calendar calendar, String name) {
         super.setName(name);
@@ -30,7 +29,7 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
     /**
      * This method is to update the Calendar that the Ticketer is reading.
      *
-     @param  calendar  the Calendar that the Ticketer will use for checking the validity of Tickets
+     * @param  calendar  The Calendar that the Ticketer will use for checking the validity of Tickets.
      */
     public void readCalender(Calendar calendar) {
         this.calendar = calendar;
@@ -39,9 +38,8 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
     /**
      * This method is to check the validity of a Ticket to the currently happening Event.
      *
-     @param  ticket  the Ticket that the Ticketer will verify if it is to the current Event
-     *
-     @return    a boolean value on if it is a valid ticket or not
+     * @param  ticket  The Ticket that the Ticketer will verify if it is to the current Event.
+     * @return The boolean value on if it is a valid ticket or not.
      */
     @Override
     public boolean verify(Ticket ticket) {
@@ -64,11 +62,9 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
      * This method displays a screen for the Ticketer that takes a Scanner and the UserInventory which it
      * returns after display is done.
      *
-     @param  scan  the Scanner used by the method for user input
-     *
-     @param  userInventory  the inventory of the user
-     *
-     @return    the UserInventory that has been modified during the method
+     * @param  scan  The Scanner used by the method for user input.
+     * @param  userInventory  The UserInventory of the user.
+     * @return The UserInventory that has been modified during the method.
      */
     @Override
     public UserInventory display(Scanner scan, UserInventory userInventory) {

@@ -66,28 +66,32 @@ public class MainActivity {
                     try {
                         userInventory = ticketBooth.display(scan, userInventory);
                     } catch (OutOfChoiceBoundsException e) {
-                        throw new RuntimeException(e);
+                        System.out.println(e.getMessage());
                     }
+                    choice = 0;
                     break;
                 case 2:
                     userInventory = ticketer.display(scan, userInventory);
+                    choice = 0;
                     break;
                 case 3:
                     try {
                         userInventory = concessionStand.display(scan, userInventory);
                     } catch (OutOfChoiceBoundsException e) {
-                        throw new RuntimeException(e);
+                        System.out.println(e.getMessage());
                     }
+                    choice = 0;
                     break;
                 case 4:
                     System.out.println("Please enter the amount of minutes you want to pass.");
                     choice = scan.nextInt();
                     try {
                         calendar.passTime(choice);
+                        System.out.println(choice + " minutes have passed.");
                     } catch (NegativeNumberException e) {
-                        throw new RuntimeException(e);
+                        System.out.println(e.getMessage());
                     }
-                    System.out.println(choice + " minutes have passed.");
+                    choice = 0;
                     break;
                 default:
                     break;

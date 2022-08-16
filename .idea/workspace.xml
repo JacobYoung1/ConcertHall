@@ -4,25 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="Added Loggers and Exceptions, improvements based off of comments">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="Added .gitignore and made some corrections to comments and some code">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/BuyableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/entities/BuyableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/Calendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/entities/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/entities/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/UserInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/entities/UserInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/abstract_classes/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/entities/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IVerify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/interfaces/IVerify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/ConcessionStand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/ConcessionStand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/TicketBooth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/TicketBooth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/menus/Ticketer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/Ticketer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/Calendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/ConcessionStand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/ConcessionStand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/TicketBooth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/TicketBooth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/Ticketer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/concert_hall/services/Ticketer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +49,8 @@
     "last_opened_file_path": "C:/Users/bardi/Downloads/apache-log4j-2.18.0-bin/log4j-api-2.18.0.jar",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.ignored.files"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -118,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660091946739</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added JavaDoc comments, sorted between entities and services, and changed the project to a Maven project">
+      <created>1660609458540</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660609458540</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -138,6 +136,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minor modifications to organization and fixed the transfer of the user's inventory from display menus to the main activity." />
     <MESSAGE value="Added Loggers and Exceptions, improvements based off of comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Loggers and Exceptions, improvements based off of comments" />
+    <MESSAGE value="Added JavaDoc comments, sorted between entities and services, and changed the project to a Maven project" />
+    <MESSAGE value="Added .gitignore and made some corrections to comments and some code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added .gitignore and made some corrections to comments and some code" />
   </component>
 </project>

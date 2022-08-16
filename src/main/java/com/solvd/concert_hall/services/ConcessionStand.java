@@ -19,18 +19,17 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
      * This is the Constructor for ConcessionStand.
      */
     public ConcessionStand() {
-        inventory = new ArrayList<BuyableItem>();
+        inventory = new ArrayList<>();
     }
 
     /**
      * This method displays a screen for the ConcessionStand that takes a Scanner and the UserInventory which it
      * returns after display is done.
      *
-     @param  scan  the Scanner used by the method for user input
-     *
-     @param  userInventory  the inventory of the user
-     *
-     @return    the UserInventory that has been modified during the method
+     * @param  scan  The Scanner used by the method for user input.
+     * @param  userInventory  The UserInventory of the user.
+     * @return The UserInventory that has been modified during the method.
+     * @throws OutOfChoiceBoundsException Throws if users input goes out of range of the options.
      */
     @Override
     public UserInventory display(Scanner scan, UserInventory userInventory) throws OutOfChoiceBoundsException {
@@ -66,11 +65,10 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
      * A method for buying a BuyableItem from the ConcessionStand inventory. It takes the index of the BuyableItem
      * being bought and the amount of money being given to buy it. It will return a BuyableItem if it is bought.
      *
-     @param  item  the int index of the BuyableItem being bought
-     *
-     @param  money  the double amount of money being given to buy the BuyableItem
-     *
-     @return      the BuyableItem that is bought or null if it wasn't
+     * @param  item  The int index of the BuyableItem being bought.
+     * @param  money  The double amount of money being given to buy the BuyableItem.
+     * @return The BuyableItem that is bought or null if it wasn't.
+     * @throws OutOfChoiceBoundsException Throws if users input goes out of range of the options.
      */
     @Override
     public BuyableItem buyItem(int item, double money) throws OutOfChoiceBoundsException {
@@ -90,9 +88,8 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
     /**
      * A method that adds an int amount of stock to the int index item in the ConcessionStand inventory.
      *
-     @param  item  the int index of the item in the ConcessionStand inventory
-     *
-     @param  amount  the int amount of stock being added to the item
+     * @param  item  The int index of the item in the ConcessionStand inventory.
+     * @param  amount  The int amount of stock being added to the item.
      */
     @Override
     public void addStock(int item, int amount) {
@@ -103,7 +100,7 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
      * A method that adds a BuyableItem to the ConcessionStand inventory or, if it is already there, adds it to the
      * stock.
      *
-     @param  buyableItem  the BuyableItem that is being added to the ConcessionStand inventory
+     * @param  buyableItem  The BuyableItem that is being added to the ConcessionStand inventory.
      */
     @Override
     public void addItem(BuyableItem buyableItem) {
@@ -112,13 +109,12 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
             return;
         }
         inventory.add(buyableItem);
-        return;
     }
 
     /**
      * A method that removes a BuyableItem from the ConcessionStand inventory.
      *
-     @param  buyableItem  the BuyableItem that is being removed from the ConcessionStand inventory
+     * @param  buyableItem  The BuyableItem that is being removed from the ConcessionStand inventory.
      */
     @Override
     public void removeItem(BuyableItem buyableItem) {
