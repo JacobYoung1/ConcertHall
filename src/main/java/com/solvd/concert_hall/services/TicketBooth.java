@@ -106,11 +106,6 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
         inventory.get(item).addStock(amount);
     }
 
-    /**
-     * A method that adds a Ticket to the TicketBooth inventory.
-     *
-     * @param  item  The Ticket that is being added to the TicketBooth inventory.
-     */
     @Override
     public void addItem(Ticket item) {
         inventory.add(item);
@@ -122,11 +117,6 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
         }
     }
 
-    /**
-     * A method that removes a Ticket from the TicketBooth inventory.
-     *
-     * @param  item  The Ticket that is being removed from the TicketBooth inventory.
-     */
     @Override
     public void removeItem(Ticket item) {
         inventory.remove(item);

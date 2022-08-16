@@ -96,12 +96,6 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
         inventory.get(item).addStock(amount);
     }
 
-    /**
-     * A method that adds a BuyableItem to the ConcessionStand inventory or, if it is already there, adds it to the
-     * stock.
-     *
-     * @param  buyableItem  The BuyableItem that is being added to the ConcessionStand inventory.
-     */
     @Override
     public void addItem(BuyableItem buyableItem) {
         if(inventory.contains(buyableItem)) {
@@ -111,11 +105,6 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
         inventory.add(buyableItem);
     }
 
-    /**
-     * A method that removes a BuyableItem from the ConcessionStand inventory.
-     *
-     * @param  buyableItem  The BuyableItem that is being removed from the ConcessionStand inventory.
-     */
     @Override
     public void removeItem(BuyableItem buyableItem) {
         inventory.remove(buyableItem);

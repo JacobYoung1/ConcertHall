@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="updated .gitignore">
-      <change beforePath="$PROJECT_DIR$/src/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="bb4164c8-5e9b-4f92-b7a2-300025bdb041" name="Changes" comment="moved .gitignore to root">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660658863775</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="moved .gitignore to root">
+      <created>1660659267362</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1660659267362</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -156,6 +165,7 @@
     <MESSAGE value="Added JavaDoc comments, sorted between entities and services, and changed the project to a Maven project" />
     <MESSAGE value="Added .gitignore and made some corrections to comments and some code" />
     <MESSAGE value="updated .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated .gitignore" />
+    <MESSAGE value="moved .gitignore to root" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved .gitignore to root" />
   </component>
 </project>
