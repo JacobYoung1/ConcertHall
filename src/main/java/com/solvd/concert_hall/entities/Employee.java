@@ -1,4 +1,4 @@
-package main.java.com.solvd.concert_hall.abstract_classes;
+package main.java.com.solvd.concert_hall.entities;
 
 public abstract class Employee {
     private String name;

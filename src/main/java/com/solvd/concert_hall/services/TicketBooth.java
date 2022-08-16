@@ -1,9 +1,8 @@
-package main.java.com.solvd.concert_hall.menus;
+package main.java.com.solvd.concert_hall.services;
 
-import main.java.com.solvd.concert_hall.Calendar;
-import main.java.com.solvd.concert_hall.Event;
-import main.java.com.solvd.concert_hall.Ticket;
-import main.java.com.solvd.concert_hall.UserInventory;
+import main.java.com.solvd.concert_hall.entities.Event;
+import main.java.com.solvd.concert_hall.entities.Ticket;
+import main.java.com.solvd.concert_hall.entities.UserInventory;
 import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
 import main.java.com.solvd.concert_hall.interfaces.IDisplay;
 import main.java.com.solvd.concert_hall.interfaces.IObserver;
@@ -19,16 +18,29 @@ import java.util.Scanner;
 public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
     private static final Logger logger = LogManager.getLogger(TicketBooth.class);
     final int concertHallSeats = 425;
-    private Calendar calendar;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private ArrayList<Ticket> inventory;
 
+    /**
+     * This is the Constructor for Ticketer that takes a Calendar and a String name.
+     *
+     @param  calendar  the Calendar that the TicketBooth will observe for updates on events
+     */
     public TicketBooth(Calendar calendar) {
-        this.calendar = calendar;
         calendar.addObserver(this);
         inventory = new ArrayList<Ticket>();
     }
 
+    /**
+     * This method displays a screen for the TicketBooth that takes a Scanner and the UserInventory which it
+     * returns after display is done.
+     *
+     @param  scan  the Scanner used by the method for user input
+     *
+     @param  userInventory  the inventory of the user
+     *
+     @return    the UserInventory that has been modified during the method
+     */
     @Override
     public UserInventory display(Scanner scan, UserInventory userInventory) throws OutOfChoiceBoundsException {
         logger.info("entered display for ticket booth");
@@ -60,6 +72,16 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
         }
     }
 
+    /**
+     * A method for buying a Ticket from the TicketBooth inventory. It takes the index of the Ticket
+     * being bought and the amount of money being given to buy it. It will return a Ticket if it is bought.
+     *
+     @param  item  the int index of the Ticket being bought
+     *
+     @param  money  the double amount of money being given to buy the Ticket
+     *
+     @return      the Ticket that is bought or null if it wasn't
+     */
     @Override
     public Ticket buyItem(int item, double money) throws OutOfChoiceBoundsException {
         try {
@@ -75,11 +97,23 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
         return inventory.get(item);
     }
 
+    /**
+     * A method that adds an int amount of stock to the int index item in the ConcessionStand inventory.
+     *
+     @param  item  the int index of the item in the TicketBooth inventory
+     *
+     @param  amount  the int amount of stock being added to the item
+     */
     @Override
     public void addStock(int item, int amount) {
         inventory.get(item).addStock(amount);
     }
 
+    /**
+     * A method that adds a Ticket to the TicketBooth inventory.
+     *
+     @param  item  the Ticket that is being added to the TicketBooth inventory
+     */
     @Override
     public void addItem(Ticket item) {
         inventory.add(item);
@@ -91,19 +125,35 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
         }
     }
 
+    /**
+     * A method that removes a Ticket from the TicketBooth inventory.
+     *
+     @param  item  the Ticket that is being removed from the TicketBooth inventory
+     */
     @Override
     public void removeItem(Ticket item) {
         inventory.remove(item);
     }
 
+    /**
+     * A method that updates TicketBooth to update its inventory with new Tickets for the new Event.
+     *
+     @param  event  the Event that was recently created
+     */
     @Override
-    public void createTicketsUpdate(Event event) {
+    public void createEventsUpdate(Event event) {
         Ticket ticket = new Ticket(event, event.getPrice(), concertHallSeats);
         addItem(ticket);
     }
 
+    /**
+     * A method that updates TicketBooth to update its inventory by getting rid of the Tickets associated with the
+     * deleted event.
+     *
+     @param  event  the Event that was recently deleted
+     */
     @Override
-    public void deleteTicketsUpdate(Event event) {
+    public void deleteEventsUpdate(Event event) {
         for (Ticket t : inventory) {
             if (t.getEvent().equals(event)) {
                 removeItem(t);

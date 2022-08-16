@@ -1,4 +1,4 @@
-package main.java.com.solvd.concert_hall;
+package main.java.com.solvd.concert_hall.entities;
 
 public class BuyableItem {
     private double price;

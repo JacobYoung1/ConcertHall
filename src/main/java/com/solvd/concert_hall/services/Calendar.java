@@ -1,5 +1,6 @@
-package main.java.com.solvd.concert_hall;
+package main.java.com.solvd.concert_hall.services;
 
+import main.java.com.solvd.concert_hall.entities.Event;
 import main.java.com.solvd.concert_hall.exceptions.NegativeNumberException;
 import main.java.com.solvd.concert_hall.interfaces.IObserver;
 import main.java.com.solvd.concert_hall.interfaces.ISubject;
@@ -57,8 +58,6 @@ public class Calendar implements ISubject<Event> {
      @param  event  the Event that will be checked on if it is happening
      *
      @return      the result if the event is happening or not
-     *
-     @see         boolean
      */
     private boolean isHappening(Event event) {
         LocalDateTime tempDate = event.getDate().plusMinutes(event.getLengthMinutes());
@@ -73,8 +72,6 @@ public class Calendar implements ISubject<Event> {
      * It returns null if there isn't any event happening
      *
      @return      the event currently happening
-     *
-     @see         Event
      */
     public Event getCurrentEvent() {
         for(Event e: events) {
@@ -93,8 +90,6 @@ public class Calendar implements ISubject<Event> {
      @param  event  the Event that may or may not be added
      *
      @return      the result of if the event was added or not
-     *
-     @see         boolean
      */
     public boolean addEvent(Event event) {
         LocalDateTime tempDate1 = event.getDate().plusMinutes(event.getLengthMinutes());
@@ -106,7 +101,7 @@ public class Calendar implements ISubject<Event> {
             }
         }
         for (IObserver o : observers) {
-            o.createTicketsUpdate(event);
+            o.createEventsUpdate(event);
         }
         events.add(event);
         return true;
@@ -118,7 +113,6 @@ public class Calendar implements ISubject<Event> {
      * all of the observers.
      *
      @param  minutes  the int amount of minutes that will pass
-     *
      */
     public final void passTime(int minutes) throws NegativeNumberException {
         if (minutes < 0) {
@@ -128,7 +122,7 @@ public class Calendar implements ISubject<Event> {
         for (Event e : events) {
             if (e.getDate().plusMinutes(e.getLengthMinutes()).isBefore(date)) {
                 for (IObserver o : observers) {
-                    o.deleteTicketsUpdate(e);
+                    o.deleteEventsUpdate(e);
                 }
                 events.remove(e);
             }
@@ -148,8 +142,6 @@ public class Calendar implements ISubject<Event> {
      @param  date  the LocalDateTime you want a String version of
      *
      @return      the string representation of the date
-     *
-     @see         String
      */
     public static String printTime(LocalDateTime date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm.");

@@ -1,4 +1,6 @@
-package main.java.com.solvd.concert_hall;
+package main.java.com.solvd.concert_hall.entities;
+
+import main.java.com.solvd.concert_hall.services.Calendar;
 
 import java.time.LocalDateTime;
 

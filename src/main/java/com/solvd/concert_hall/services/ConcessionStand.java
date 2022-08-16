@@ -1,7 +1,7 @@
-package main.java.com.solvd.concert_hall.menus;
+package main.java.com.solvd.concert_hall.services;
 
-import main.java.com.solvd.concert_hall.BuyableItem;
-import main.java.com.solvd.concert_hall.UserInventory;
+import main.java.com.solvd.concert_hall.entities.BuyableItem;
+import main.java.com.solvd.concert_hall.entities.UserInventory;
 import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
 import main.java.com.solvd.concert_hall.interfaces.IDisplay;
 import main.java.com.solvd.concert_hall.interfaces.IShop;
@@ -15,10 +15,23 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
     private static final Logger logger = LogManager.getLogger(ConcessionStand.class);
     private ArrayList<BuyableItem> inventory;
 
+    /**
+     * This is the Constructor for ConcessionStand.
+     */
     public ConcessionStand() {
         inventory = new ArrayList<BuyableItem>();
     }
 
+    /**
+     * This method displays a screen for the ConcessionStand that takes a Scanner and the UserInventory which it
+     * returns after display is done.
+     *
+     @param  scan  the Scanner used by the method for user input
+     *
+     @param  userInventory  the inventory of the user
+     *
+     @return    the UserInventory that has been modified during the method
+     */
     @Override
     public UserInventory display(Scanner scan, UserInventory userInventory) throws OutOfChoiceBoundsException {
         logger.info("entered display for concession stand");
@@ -49,6 +62,16 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
         }
     }
 
+    /**
+     * A method for buying a BuyableItem from the ConcessionStand inventory. It takes the index of the BuyableItem
+     * being bought and the amount of money being given to buy it. It will return a BuyableItem if it is bought.
+     *
+     @param  item  the int index of the BuyableItem being bought
+     *
+     @param  money  the double amount of money being given to buy the BuyableItem
+     *
+     @return      the BuyableItem that is bought or null if it wasn't
+     */
     @Override
     public BuyableItem buyItem(int item, double money) throws OutOfChoiceBoundsException {
         try {
@@ -64,12 +87,24 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
         return inventory.get(item);
     }
 
+    /**
+     * A method that adds an int amount of stock to the int index item in the ConcessionStand inventory.
+     *
+     @param  item  the int index of the item in the ConcessionStand inventory
+     *
+     @param  amount  the int amount of stock being added to the item
+     */
     @Override
     public void addStock(int item, int amount) {
         inventory.get(item).addStock(amount);
     }
 
-    /* used to add items to the stand */
+    /**
+     * A method that adds a BuyableItem to the ConcessionStand inventory or, if it is already there, adds it to the
+     * stock.
+     *
+     @param  buyableItem  the BuyableItem that is being added to the ConcessionStand inventory
+     */
     @Override
     public void addItem(BuyableItem buyableItem) {
         if(inventory.contains(buyableItem)) {
@@ -80,8 +115,13 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
         return;
     }
 
+    /**
+     * A method that removes a BuyableItem from the ConcessionStand inventory.
+     *
+     @param  buyableItem  the BuyableItem that is being removed from the ConcessionStand inventory
+     */
     @Override
-    public void removeItem(BuyableItem item) {
-        inventory.remove(item);
+    public void removeItem(BuyableItem buyableItem) {
+        inventory.remove(buyableItem);
     }
 }

@@ -1,10 +1,9 @@
-package main.java.com.solvd.concert_hall.menus;
+package main.java.com.solvd.concert_hall.services;
 
-import main.java.com.solvd.concert_hall.Calendar;
-import main.java.com.solvd.concert_hall.BuyableItem;
-import main.java.com.solvd.concert_hall.Ticket;
-import main.java.com.solvd.concert_hall.UserInventory;
-import main.java.com.solvd.concert_hall.abstract_classes.Employee;
+import main.java.com.solvd.concert_hall.entities.BuyableItem;
+import main.java.com.solvd.concert_hall.entities.Ticket;
+import main.java.com.solvd.concert_hall.entities.UserInventory;
+import main.java.com.solvd.concert_hall.entities.Employee;
 import main.java.com.solvd.concert_hall.interfaces.IDisplay;
 import main.java.com.solvd.concert_hall.interfaces.IVerify;
 import org.apache.logging.log4j.LogManager;
@@ -14,12 +13,36 @@ import java.util.Scanner;
 
 public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
     private static final Logger logger = LogManager.getLogger(Ticketer.class);
-    private Calendar calendar;
+    private Calendar calendar = null;
 
+    /**
+     * This is the Constructor for Ticketer that takes a Calendar and a String name.
+     *
+     @param  calendar  the Calendar that the Ticketer will use for checking the validity of Tickets
+     *
+     @param  name      the String name of the Ticketer
+     */
     public Ticketer(Calendar calendar, String name) {
-        this.calendar = calendar;
         super.setName(name);
+        readCalender(calendar);
     }
+
+    /**
+     * This method is to update the Calendar that the Ticketer is reading.
+     *
+     @param  calendar  the Calendar that the Ticketer will use for checking the validity of Tickets
+     */
+    public void readCalender(Calendar calendar) {
+        this.calendar = calendar;
+    }
+
+    /**
+     * This method is to check the validity of a Ticket to the currently happening Event.
+     *
+     @param  ticket  the Ticket that the Ticketer will verify if it is to the current Event
+     *
+     @return    a boolean value on if it is a valid ticket or not
+     */
     @Override
     public boolean verify(Ticket ticket) {
         if(calendar.getCurrentEvent().equals(ticket.getEvent())) {
@@ -29,11 +52,24 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
         return false;
     }
 
+    /**
+     * This method is to print out a greeting.
+     */
     @Override
     public void greeting() {
         System.out.println("Hello, my name is " + this.getName() + ". Ticket please.");
     }
 
+    /**
+     * This method displays a screen for the Ticketer that takes a Scanner and the UserInventory which it
+     * returns after display is done.
+     *
+     @param  scan  the Scanner used by the method for user input
+     *
+     @param  userInventory  the inventory of the user
+     *
+     @return    the UserInventory that has been modified during the method
+     */
     @Override
     public UserInventory display(Scanner scan, UserInventory userInventory) {
         logger.info("entered display for ticketer");

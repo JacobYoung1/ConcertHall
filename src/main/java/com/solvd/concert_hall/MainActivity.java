@@ -1,14 +1,26 @@
-package main.java.com.solvd.concert_hall.menus;
+package main.java.com.solvd.concert_hall;
 
-import main.java.com.solvd.concert_hall.*;
+import main.java.com.solvd.concert_hall.entities.BuyableItem;
+import main.java.com.solvd.concert_hall.entities.Event;
+import main.java.com.solvd.concert_hall.entities.UserInventory;
 import main.java.com.solvd.concert_hall.exceptions.NegativeNumberException;
 import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
 
 import java.util.Scanner;
 
+import main.java.com.solvd.concert_hall.services.Calendar;
+import main.java.com.solvd.concert_hall.services.ConcessionStand;
+import main.java.com.solvd.concert_hall.services.TicketBooth;
+import main.java.com.solvd.concert_hall.services.Ticketer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * This is a simulation of a ConcertHall with the ability to visit a TicketBooth, ConcessionStand, and the ConcertHall
+ * itself when visiting the Ticketer.
+ *
+ * @author  Jacob Young
+ */
 public class MainActivity {
     private static final Logger logger = LogManager.getLogger(MainActivity.class);
     public static void main(String[] args) {
@@ -19,7 +31,7 @@ public class MainActivity {
         Scanner scan = new Scanner(System.in);
         TicketBooth ticketBooth = new TicketBooth(calendar);
         ConcessionStand concessionStand = new ConcessionStand();
-        Ticketer ticketer = new Ticketer(calendar,"Joshua Miles");
+        Ticketer ticketer = new Ticketer(calendar, "Joshua Miles");
 
         /* Adding details */
         Event event1 = new Event("John's Recital", 2022, 9, 14, 12, 30, 100, 5.00);
@@ -36,6 +48,7 @@ public class MainActivity {
         concessionStand.addItem(buyableItem1);
         concessionStand.addItem(buyableItem2);
         concessionStand.addItem(buyableItem3);
+        ticketer.readCalender(calendar);
 
         /* This is where the user interface occurs. */
         int choice = 0;
@@ -79,6 +92,7 @@ public class MainActivity {
                 default:
                     break;
             }
+            ticketer.readCalender(calendar);
         }
         System.out.println("Your time at the concert hall has ended.");
     }
