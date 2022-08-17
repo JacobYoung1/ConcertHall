@@ -8,10 +8,7 @@ import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
 
 import java.util.Scanner;
 
-import main.java.com.solvd.concert_hall.services.Calendar;
-import main.java.com.solvd.concert_hall.services.ConcessionStand;
-import main.java.com.solvd.concert_hall.services.TicketBooth;
-import main.java.com.solvd.concert_hall.services.Ticketer;
+import main.java.com.solvd.concert_hall.services.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +19,6 @@ import org.apache.logging.log4j.Logger;
  * @author  Jacob Young
  */
 public class MainActivity {
-    private static final Logger logger = LogManager.getLogger(MainActivity.class);
     public static void main(String[] args) {
 
         /* Basic setup */
@@ -50,54 +46,9 @@ public class MainActivity {
         concessionStand.addItem(buyableItem3);
         ticketer.readCalender(calendar);
 
+        ConcertHallLobby concertHallLobby = new ConcertHallLobby(calendar, concessionStand, ticketBooth, ticketer);
+
         /* This is where the user interface occurs. */
-        int choice = 0;
-        while(choice >= 0) {
-            System.out.println("You find yourself in the lobby of THE concert hall of concert halls");
-            System.out.print("It is currently ");
-            calendar.printTime();
-            System.out.println("Where would you like to go?");
-            System.out.println("You can go to the ticket booth (type 1), to the ticketer (type 2), or the concession stand (type 3).");
-            System.out.println("You can also wait for time to pass (type 4). You can also leave by typing a negative number.");
-            choice = scan.nextInt();
-            logger.trace("Made choice of " + choice);
-            switch (choice) {
-                case 1:
-                    try {
-                        userInventory = ticketBooth.display(scan, userInventory);
-                    } catch (OutOfChoiceBoundsException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    choice = 0;
-                    break;
-                case 2:
-                    userInventory = ticketer.display(scan, userInventory);
-                    choice = 0;
-                    break;
-                case 3:
-                    try {
-                        userInventory = concessionStand.display(scan, userInventory);
-                    } catch (OutOfChoiceBoundsException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    choice = 0;
-                    break;
-                case 4:
-                    System.out.println("Please enter the amount of minutes you want to pass.");
-                    choice = scan.nextInt();
-                    try {
-                        calendar.passTime(choice);
-                        System.out.println(choice + " minutes have passed.");
-                    } catch (NegativeNumberException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    choice = 0;
-                    break;
-                default:
-                    break;
-            }
-            ticketer.readCalender(calendar);
-        }
-        System.out.println("Your time at the concert hall has ended.");
+        concertHallLobby.display(scan, userInventory);
     }
 }

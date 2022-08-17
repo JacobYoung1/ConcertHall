@@ -72,9 +72,7 @@ public class ConcessionStand implements IShop<BuyableItem>, IDisplay {
      */
     @Override
     public BuyableItem buyItem(int item, double money) throws OutOfChoiceBoundsException {
-        try {
-            inventory.get(item);
-        } catch (Exception e) {
+        if(inventory.size() - 1 < item) {
             logger.error("out of bounds number " + item + " from array length of " + inventory.size());
             throw new OutOfChoiceBoundsException("That item number does not exist.");
         }
