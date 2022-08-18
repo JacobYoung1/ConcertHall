@@ -1,17 +1,19 @@
-package main.java.com.solvd.concert_hall;
+package main.java.com.solvd.concert_hall.entities;
 
-import main.java.com.solvd.concert_hall.abstract_classes.Sellable;
-
-public class Ticket extends Sellable {
+public class Ticket extends BuyableItem {
     private Event event;
 
     public Ticket(Event event, double price, int amount) {
-        super(price, event.getName(), amount);
+        super(event.getName(), price, amount);
         this.event = event;
     }
 
     public Event getEvent() {
         return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     @Override
@@ -38,7 +40,6 @@ public class Ticket extends Sellable {
 
     @Override
     public String toString() {
-
         return event.toString() + " for $" + String.format("%.2f", this.getPrice()) + "  with " + this.getAmount() + "left over";
     }
 }
