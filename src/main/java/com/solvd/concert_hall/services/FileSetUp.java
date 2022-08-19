@@ -24,7 +24,7 @@ public class FileSetUp {
      * @return The Calendar made by the method.
      */
     public static Calendar calendarSetUp1() {
-        File file = new File("src/main/resources/currentDate.txt");
+        File file = new File("main/resources/currentDate.txt");
         if(!file.exists()) {
             logger.error("currentDate.txt not found");
             return new Calendar(LocalDateTime.of(2022, 8, 2, 5, 0));
@@ -34,8 +34,7 @@ public class FileSetUp {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             return new Calendar(LocalDateTime.parse(lines.get(0), formatter));
         } catch (IOException e) {
-            logger.error("could not read file");
-            System.out.println(e.getMessage());
+            logger.error("could not read file: " + e.getMessage());
             return new Calendar(LocalDateTime.of(2022, 8, 2, 5, 0));
         }
     }
@@ -47,7 +46,7 @@ public class FileSetUp {
      * @return The Calendar with events added.
      */
     public static Calendar calendarSetUp2(Calendar calendar) {
-        File file = new File("src/main/resources/events.txt");
+        File file = new File("main/resources/events.txt");
         if(!file.exists()) {
             logger.error("events.txt not found");
             return calendar;
@@ -66,8 +65,7 @@ public class FileSetUp {
             }
             return calendar;
         } catch (IOException e) {
-            logger.error("could not read file");
-            System.out.println(e.getMessage());
+            logger.error("could not read file: " + e.getMessage());
             return calendar;
         }
     }
@@ -78,7 +76,7 @@ public class FileSetUp {
      * @return The ConcessionStand made by the method.
      */
     public static ConcessionStand concessionStandSetUp() {
-        File file = new File("src/main/resources/buyableItems.txt");
+        File file = new File("main/resources/buyableItems.txt");
         if(!file.exists()) {
             logger.error("buyableItems.txt not found");
             return new ConcessionStand();
@@ -96,8 +94,7 @@ public class FileSetUp {
             }
             return concessionStand;
         } catch (IOException e) {
-            logger.error("could not read file");
-            System.out.println(e.getMessage());
+            logger.error("could not read file: " + e.getMessage());
             return new ConcessionStand();
         }
     }
