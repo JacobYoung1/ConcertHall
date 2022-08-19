@@ -10,9 +10,9 @@ public class Event {
     private int lengthMinutes;
     private double price;
 
-    public Event(String name, int year, int month, int day, int hour, int minute, int lengthMinutes, double price) {
+    public Event(String name, LocalDateTime date, int lengthMinutes, double price) {
         this.name = name;
-        this.date = date.of(year, month, day, hour, minute);
+        this.date = date;
         this.lengthMinutes = lengthMinutes;
         this.price = price;
     }
