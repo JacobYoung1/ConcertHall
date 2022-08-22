@@ -8,23 +8,20 @@ import main.java.com.solvd.concert_hall.interfaces.ISubject;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Calendar implements ISubject<Event> {
-    public ArrayList<Event> events;
+    private ArrayList<Event> events;
     private LocalDateTime date;
 
     /**
      * This is the Constructor for Calendar that takes a year, month, day, hour, and minute.
      *
-     * @param  year  The int year you are setting the calendar too.
-     * @param  month  The int month you are setting the calendar too.
-     * @param  day  The int day you are setting the calendar too.
-     * @param  hour  The int hour you are setting the calendar too.
-     * @param  minute  The int minute you are setting the calendar too.
+     * @param  date The LocalDateTime that you are setting the Calendar's date to.
      */
-    public Calendar(int year, int month, int day, int hour, int minute) {
+    public Calendar(LocalDateTime date) {
         this.events = new ArrayList<>();
-        this.date = date.of(year, month, day, hour, minute);
+        this.date = date;
     }
 
     /**
@@ -109,8 +106,8 @@ public class Calendar implements ISubject<Event> {
             throw new NegativeNumberException("You cannot reverse time.");
         }
         date.plusMinutes(minutes);
-        LocalDateTime tempDate;
-        for (Event e : events) {
+        Consumer<Event> update = (e) -> {
+            LocalDateTime tempDate;
             tempDate = e.getDate();
             tempDate = tempDate.plusMinutes(e.getLengthMinutes());
             if (tempDate.isBefore(date)) {
@@ -119,7 +116,8 @@ public class Calendar implements ISubject<Event> {
                 }
                 events.remove(e);
             }
-        }
+        };
+        events.forEach(update);
     }
 
     /**
