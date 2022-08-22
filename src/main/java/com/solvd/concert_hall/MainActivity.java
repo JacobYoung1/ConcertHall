@@ -1,17 +1,8 @@
 package main.java.com.solvd.concert_hall;
 
-import main.java.com.solvd.concert_hall.entities.BuyableItem;
-import main.java.com.solvd.concert_hall.entities.Event;
 import main.java.com.solvd.concert_hall.entities.UserInventory;
-import main.java.com.solvd.concert_hall.exceptions.NegativeNumberException;
-import main.java.com.solvd.concert_hall.exceptions.OutOfChoiceBoundsException;
-
-import java.io.IOException;
 import java.util.Scanner;
-
 import main.java.com.solvd.concert_hall.services.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * This is a simulation of a ConcertHall with the ability to visit a TicketBooth, ConcessionStand, and the ConcertHall
