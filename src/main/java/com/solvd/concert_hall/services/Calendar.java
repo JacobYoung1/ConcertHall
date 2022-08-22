@@ -8,6 +8,7 @@ import main.java.com.solvd.concert_hall.interfaces.ISubject;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Calendar implements ISubject<Event> {
     private ArrayList<Event> events;
@@ -105,8 +106,8 @@ public class Calendar implements ISubject<Event> {
             throw new NegativeNumberException("You cannot reverse time.");
         }
         date.plusMinutes(minutes);
-        LocalDateTime tempDate;
-        for (Event e : events) {
+        Consumer<Event> update = (e) -> {
+            LocalDateTime tempDate;
             tempDate = e.getDate();
             tempDate = tempDate.plusMinutes(e.getLengthMinutes());
             if (tempDate.isBefore(date)) {
@@ -115,7 +116,8 @@ public class Calendar implements ISubject<Event> {
                 }
                 events.remove(e);
             }
-        }
+        };
+        events.forEach(update);
     }
 
     /**
