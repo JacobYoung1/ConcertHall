@@ -135,7 +135,7 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
      */
     @Override
     public void deleteEventsUpdate(Event event) {
-        inventory.stream().forEach(t -> {
+        inventory.forEach(t -> {
             if (t.getEvent().equals(event)) {
                 removeItem(t);
                 return;

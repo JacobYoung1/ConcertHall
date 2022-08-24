@@ -81,7 +81,7 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
             System.out.println(ticket.getName() + " was awesome.");
             userInventory.deleteTicket(ticket);
         }
-        userInventory.getBuyableItems().stream()
+        userInventory.getBuyableItems()
                 .forEach(i -> System.out.println("You consumed a(n) " + i.getName() + "."));
         userInventory.setBuyableItems(new ArrayList<>());
         return userInventory;

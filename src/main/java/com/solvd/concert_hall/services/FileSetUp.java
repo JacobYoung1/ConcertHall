@@ -53,7 +53,7 @@ public class FileSetUp {
         try {
             List<String> lines = FileUtils.readLines(file, StandardCharsets.UTF_8);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            lines.stream().forEach(line -> {
+            lines.forEach(line -> {
                 String[] sections = line.split("::");
                 String name = sections[0];
                 LocalDateTime date = LocalDateTime.parse(sections[1], formatter);
@@ -83,7 +83,7 @@ public class FileSetUp {
         try {
             List<String> lines = FileUtils.readLines(file, StandardCharsets.UTF_8);
             ConcessionStand concessionStand = new ConcessionStand();
-            lines.stream().forEach(line -> {
+            lines.forEach(line -> {
                 String[] sections = line.split("::");
                 String name = sections[0];
                 double price = Double.parseDouble(sections[1]);

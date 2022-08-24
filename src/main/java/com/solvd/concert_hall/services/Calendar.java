@@ -74,7 +74,7 @@ public class Calendar implements ISubject {
      */
     public Event getCurrentEvent() {
         return events.stream()
-                .filter(e -> isHappening(e))
+                .filter(this::isHappening)
                 .findFirst()
                 .orElse(new Event("", LocalDateTime.now(), 0, 0));
     }
@@ -88,7 +88,7 @@ public class Calendar implements ISubject {
      */
     public void addEvent(Event event) {
         LocalDateTime tempDate1 = event.getDate().plusMinutes(event.getLengthMinutes());
-        events.stream().forEach(e -> {
+        events.forEach(e -> {
             LocalDateTime tempDate2 = e.getDate().plusMinutes(e.getLengthMinutes());
             if(!(event.getDate().isAfter(tempDate2) || e.getDate().isAfter(tempDate1))){
                 return;
@@ -112,8 +112,8 @@ public class Calendar implements ISubject {
         if (minutes < 0) {
             throw new NegativeNumberException("You cannot reverse time.");
         }
-        date.plusMinutes(minutes);
-        events.stream().forEach(e -> {
+        date = date.plusMinutes(minutes);
+        events.forEach(e -> {
             LocalDateTime tempDate;
             tempDate = e.getDate();
             tempDate = tempDate.plusMinutes(e.getLengthMinutes());
