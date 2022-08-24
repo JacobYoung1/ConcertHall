@@ -9,6 +9,7 @@ import main.java.com.solvd.concert_hall.interfaces.IVerify;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
@@ -43,8 +44,8 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
      */
     @Override
     public boolean verify(Ticket ticket) {
+        System.out.println(calendar.getCurrentEvent());
         if(calendar.getCurrentEvent().equals(ticket.getEvent())) {
-            System.out.println("Enjoy the show.");
             return true;
         }
         return false;
@@ -73,16 +74,16 @@ public class Ticketer extends Employee implements IVerify<Ticket>, IDisplay {
         if(userInventory.getTickets().size() == 0) {
             System.out.println("Come back later when you have tickets");
         }
-        for (Ticket t: userInventory.getTickets()) {
-            if(verify(t)) {
-                for(BuyableItem i: userInventory.getBuyableItems()) {
-                    System.out.println("You consumed a(n) " + i.getName() + ".");
-                    userInventory.deleteBuyableItem(i);
-                }
-                System.out.println(t.getName() + " was awesome.");
-                userInventory.deleteTicket(t);
-            }
+        Ticket ticket = userInventory.getTickets().stream()
+                .filter(this::verify).findFirst().orElse(null);
+        if(ticket != null) {
+            System.out.println("Enjoy the show.");
+            System.out.println(ticket.getName() + " was awesome.");
+            userInventory.deleteTicket(ticket);
         }
+        userInventory.getBuyableItems().stream()
+                .forEach(i -> System.out.println("You consumed a(n) " + i.getName() + "."));
+        userInventory.setBuyableItems(new ArrayList<>());
         return userInventory;
     }
 }

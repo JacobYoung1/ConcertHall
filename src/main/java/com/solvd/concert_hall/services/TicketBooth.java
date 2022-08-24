@@ -11,9 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
     private static final Logger logger = LogManager.getLogger(TicketBooth.class);
@@ -107,12 +105,10 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
     @Override
     public void addItem(Ticket item) {
         inventory.add(item);
-        for(int i = inventory.size() - 1; i >= 1; i--) {
-            if(inventory.get(i).getEvent().getDate().isAfter(inventory.get(i - 1).getEvent().getDate())) {
-                return;
-            }
-            Collections.swap(inventory, i, i-1);
-        }
+        List<Ticket> list = inventory.stream()
+                .sorted(Comparator.comparing(i -> i.getEvent().getDate()))
+                .toList();
+        inventory = new ArrayList<>(list);
     }
 
     @Override
@@ -139,11 +135,11 @@ public final class TicketBooth implements IShop<Ticket>, IDisplay, IObserver {
      */
     @Override
     public void deleteEventsUpdate(Event event) {
-        for (Ticket t : inventory) {
+        inventory.stream().forEach(t -> {
             if (t.getEvent().equals(event)) {
                 removeItem(t);
                 return;
             }
-        }
+        });
     }
 }

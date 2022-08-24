@@ -19,11 +19,11 @@ public class FileSetUp {
      *
      * @return The Calendar made by the method.
      */
-    public static Calendar calendarSetUp1() {
-        File file = new File("main/resources/currentDate.txt");
+    public static Calendar calendarSetUp1(String path) {
+        File file = new File(path);
         if(!file.exists()) {
             logger.error("currentDate.txt not found");
-            return new Calendar(LocalDateTime.of(2022, 8, 2, 5, 0));
+            return new Calendar();
         }
         try {
             List<String> lines = FileUtils.readLines(file, StandardCharsets.UTF_8);
@@ -31,7 +31,10 @@ public class FileSetUp {
             return new Calendar(LocalDateTime.parse(lines.get(0), formatter));
         } catch (IOException e) {
             logger.error("could not read file: " + e.getMessage());
-            return new Calendar(LocalDateTime.of(2022, 8, 2, 5, 0));
+            return new Calendar();
+        } catch (IndexOutOfBoundsException e) {
+            logger.error("date is not there: " + e.getMessage());
+            return new Calendar();
         }
     }
 
@@ -41,8 +44,8 @@ public class FileSetUp {
      * @param calendar The Calendar which the Events will be added to.
      * @return The Calendar with events added.
      */
-    public static Calendar calendarSetUp2(Calendar calendar) {
-        File file = new File("main/resources/events.txt");
+    public static Calendar calendarSetUp2(String path, Calendar calendar) {
+        File file = new File(path);
         if(!file.exists()) {
             logger.error("events.txt not found");
             return calendar;
@@ -50,7 +53,7 @@ public class FileSetUp {
         try {
             List<String> lines = FileUtils.readLines(file, StandardCharsets.UTF_8);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            for(String line: lines) {
+            lines.stream().forEach(line -> {
                 String[] sections = line.split("::");
                 String name = sections[0];
                 LocalDateTime date = LocalDateTime.parse(sections[1], formatter);
@@ -58,7 +61,7 @@ public class FileSetUp {
                 double price = Double.parseDouble(sections[3]);
                 Event event = new Event(name, date, length, price);
                 calendar.addEvent(event);
-            }
+            });
             return calendar;
         } catch (IOException e) {
             logger.error("could not read file: " + e.getMessage());
@@ -71,8 +74,8 @@ public class FileSetUp {
      *
      * @return The ConcessionStand made by the method.
      */
-    public static ConcessionStand concessionStandSetUp() {
-        File file = new File("main/resources/buyableItems.txt");
+    public static ConcessionStand concessionStandSetUp(String path) {
+        File file = new File(path);
         if(!file.exists()) {
             logger.error("buyableItems.txt not found");
             return new ConcessionStand();
@@ -80,14 +83,14 @@ public class FileSetUp {
         try {
             List<String> lines = FileUtils.readLines(file, StandardCharsets.UTF_8);
             ConcessionStand concessionStand = new ConcessionStand();
-            for(String line: lines) {
+            lines.stream().forEach(line -> {
                 String[] sections = line.split("::");
                 String name = sections[0];
                 double price = Double.parseDouble(sections[1]);
                 int amount = Integer.parseInt(sections[2]);
                 BuyableItem buyableItem = new BuyableItem(name, price, amount);
                 concessionStand.addItem(buyableItem);
-            }
+            });
             return concessionStand;
         } catch (IOException e) {
             logger.error("could not read file: " + e.getMessage());
