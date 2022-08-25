@@ -9,19 +9,28 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
-public class Calendar implements ISubject<Event> {
+public class Calendar implements ISubject {
     private ArrayList<Event> events;
     private LocalDateTime date;
 
     /**
-     * This is the Constructor for Calendar that takes a year, month, day, hour, and minute.
+     * This is the Constructor for Calendar that takes a LocalDateTime.
      *
      * @param  date The LocalDateTime that you are setting the Calendar's date to.
      */
     public Calendar(LocalDateTime date) {
         this.events = new ArrayList<>();
         this.date = date;
+    }
+
+    /**
+     * This is the Constructor for Calendar that has no parameters and sets it to the current LocalDateTime.
+     */
+    public Calendar() {
+        this.events = new ArrayList<>();
+        this.date = LocalDateTime.now();
     }
 
     /**
@@ -53,7 +62,8 @@ public class Calendar implements ISubject<Event> {
      */
     private boolean isHappening(Event event) {
         LocalDateTime tempDate = event.getDate().plusMinutes(event.getLengthMinutes());
-        return (date.isBefore(tempDate) && date.isAfter(event.getDate()));
+        boolean isBetween = date.isBefore(tempDate) && date.isAfter(event.getDate());
+        return ((isBetween || date.isEqual(tempDate)) || date.isEqual(event.getDate()));
     }
 
     /**
@@ -63,12 +73,10 @@ public class Calendar implements ISubject<Event> {
      * @return The Event currently happening.
      */
     public Event getCurrentEvent() {
-        for(Event e: events) {
-            if(isHappening(e)) {
-                return e;
-            }
-        }
-        return null;
+        return events.stream()
+                .filter(this::isHappening)
+                .findFirst()
+                .orElse(new Event("", LocalDateTime.now(), 0, 0));
     }
 
     /**
@@ -80,16 +88,15 @@ public class Calendar implements ISubject<Event> {
      */
     public void addEvent(Event event) {
         LocalDateTime tempDate1 = event.getDate().plusMinutes(event.getLengthMinutes());
-        LocalDateTime tempDate2;
-        for(Event e: events) {
-            tempDate2 = e.getDate().plusMinutes(e.getLengthMinutes());
+        events.forEach(e -> {
+            LocalDateTime tempDate2 = e.getDate().plusMinutes(e.getLengthMinutes());
             if(!(event.getDate().isAfter(tempDate2) || e.getDate().isAfter(tempDate1))){
                 return;
             }
-        }
-        for (IObserver o : observers) {
+        });
+        observers.stream().forEach(o -> {
             o.createEventsUpdate(event);
-        }
+        });
         events.add(event);
     }
 
@@ -105,8 +112,8 @@ public class Calendar implements ISubject<Event> {
         if (minutes < 0) {
             throw new NegativeNumberException("You cannot reverse time.");
         }
-        date.plusMinutes(minutes);
-        Consumer<Event> update = (e) -> {
+        date = date.plusMinutes(minutes);
+        events.forEach(e -> {
             LocalDateTime tempDate;
             tempDate = e.getDate();
             tempDate = tempDate.plusMinutes(e.getLengthMinutes());
@@ -116,8 +123,7 @@ public class Calendar implements ISubject<Event> {
                 }
                 events.remove(e);
             }
-        };
-        events.forEach(update);
+        });
     }
 
     /**
